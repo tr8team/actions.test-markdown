@@ -11,6 +11,10 @@ import { Kore } from "@kirinnee/core";
 import { Converter } from "./lib/interface/converter";
 import { App } from "./lib/main";
 import { stringToOption } from "./lib/util";
+import { CodeQualityReportConverter } from "./lib/converter/code-quality-report-converter";
+import { DocumentationConverter } from "./lib/converter/documentation-converter";
+import { TestResultConverter } from "./lib/converter/test-result-converter";
+import { TestCoverageConverter } from "./lib/converter/test-coverage-converter";
 
 const core = new Kore();
 core.ExtendPrimitives();
@@ -19,7 +23,12 @@ const historyValidator = new ZodValidatorAdapter(history);
 const historyEntryValidator = new ZodValidatorAdapter(historyEntry);
 const io = new GithubActionIO();
 const input = new IoInputRetriever(io, historyEntryValidator, historyValidator);
-const converters: Converter[] = [];
+const converters: Converter[] = [
+  new CodeQualityReportConverter(),
+  new DocumentationConverter(),
+  new TestResultConverter(),
+  new TestCoverageConverter(),
+];
 const tableGen = new SimpleTableGenerator(converters, core);
 const service = new SimpleRenderService(converters, tableGen);
 const app = new App(input, service, io);

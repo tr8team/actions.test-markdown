@@ -25,12 +25,6 @@ const base = object({
 });
 
 // Meta data
-const coverageInfo = object({
-  line: number().min(0).max(100),
-  statement: number().min(0).max(100),
-  function: number().min(0).max(100),
-  branch: number().min(0).max(100),
-}).strict();
 
 const testResultMetadata = base
   .extend({
@@ -53,14 +47,21 @@ const codeQualityMetadata = base
     qualityRating: string(),
   })
   .strict();
-
-// special petal
-const testCoverageMetadata = coverageInfo
+const testCoverageMetadata = base
   .extend({
     type: literal("test-coverage"),
-    delta: optional(coverageInfo),
-    result: policyResult,
-    resultDetails: policyData,
+    delta: optional(
+      object({
+        line: number().min(-100).max(100),
+        statement: number().min(-100).max(100),
+        function: number().min(-100).max(100),
+        branch: number().min(-100).max(100),
+      }).strict()
+    ),
+    line: number().min(0).max(100),
+    statement: number().min(0).max(100),
+    function: number().min(0).max(100),
+    branch: number().min(0).max(100),
   })
   .strict();
 
@@ -96,7 +97,8 @@ type MetadataEnum = typeof x.data.type;
 type DataElementArray = z.infer<typeof dataElementArray>;
 type HistoryEntry = z.infer<typeof historyEntry>;
 type History = z.infer<typeof history>;
-
+type PolicyResult = z.infer<typeof policyResult>;
+type PolicyData = z.infer<typeof policyData>;
 type ActionInput = {
   current: HistoryEntry;
   history: History;
@@ -106,9 +108,11 @@ export { metadata, dataElement, dataElementArray, historyEntry, history };
 
 export type {
   ActionInput,
+  PolicyData,
   MetadataEnum,
   DataElement,
   DataElementArray,
   HistoryEntry,
+  PolicyResult,
   History,
 };
