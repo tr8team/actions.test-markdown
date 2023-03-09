@@ -41,14 +41,21 @@ class SimpleTableGenerator implements TableGenerator {
     const rowResultRaw = headers.map((header) => {
       const r = h.items.find((x) => x.name === header);
       if (r == null) {
-        return Ok("-");
+        return Ok("`-`");
       }
       return this.itemToElement(r);
     });
-    return Res.all(...rowResultRaw).map((x) => `|${x.join(" | ")} |`);
+    return Res.all(...rowResultRaw)
+      .map((x) => [
+        `[${h.sha}](${h.url})`,
+        `[Github Action](${h.action})`,
+        ...x,
+      ])
+      .map((x) => `|${x.join(" | ")} |`);
   }
 
-  buildHeaderRow(headers: string[]): string {
+  buildHeaderRow(h: string[]): string {
+    const headers = ["Commit", "Action", ...h];
     const headerRow1 = `${headers.map((header) => `| ${header} `).join("")}|\n`;
     const headerRow2 = `${headers
       .map((header) => `| ${"-".Repeat(header.length.AtMin(3))} `)
