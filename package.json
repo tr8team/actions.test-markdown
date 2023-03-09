@@ -4,7 +4,6 @@
   "private": true,
   "description": "TypeScript template action",
   "main": "lib/commonjs/main.js",
-  "type": "module",
   "scripts": {
     "start": "ts-node-esm ./src/main.ts",
     "package": "ncc build --source-map --license licenses.txt"

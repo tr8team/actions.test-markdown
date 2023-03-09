@@ -6,7 +6,7 @@ import { setFailed } from "@actions/core";
 import { history, historyEntry } from "./lib/input.js";
 import { SimpleRenderService } from "./lib/simple-render-service.js";
 import { SimpleTableGenerator } from "./lib/simple-table-generator.js";
-import pkgs from "@kirinnee/core";
+import { Kore } from "@kirinnee/core";
 import { Converter } from "./lib/interface/converter.js";
 import { App } from "./lib/main.js";
 import { stringToOption } from "./lib/util.js";
@@ -14,7 +14,6 @@ import { CodeQualityReportConverter } from "./lib/converter/code-quality-report-
 import { DocumentationConverter } from "./lib/converter/documentation-converter.js";
 import { TestResultConverter } from "./lib/converter/test-result-converter.js";
 import { TestCoverageConverter } from "./lib/converter/test-coverage-converter.js";
-const { Kore } = pkgs;
 
 const core = new Kore();
 core.ExtendPrimitives();
