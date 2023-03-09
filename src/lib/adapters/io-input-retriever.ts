@@ -1,9 +1,9 @@
-import { InputRetriever } from "../interface/input-retriever";
-import { Result } from "../core/result";
-import { ActionInput, HistoryEntry, History } from "../input";
-import { ActionIO } from "../interface/io";
-import { Validator } from "../interface/validator";
-import { Some } from "../core/option";
+import { InputRetriever } from "../interface/input-retriever.js";
+import { Result } from "../core/result.js";
+import { ActionInput, History, HistoryEntry } from "../input.js";
+import { ActionIO } from "../interface/io.js";
+import { Validator } from "../interface/validator.js";
+import { Some } from "../core/option.js";
 
 class IoInputRetriever implements InputRetriever {
   readonly #io: ActionIO;

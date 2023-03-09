@@ -1,7 +1,7 @@
 import { ZodError } from "zod";
 import { Err, Ok, Result } from "./core/result.js";
-import { None, Option, Some } from "./core/option";
-import { PolicyData, PolicyResult } from "./input";
+import { None, Option, Some } from "./core/option.js";
+import { PolicyData, PolicyResult } from "./input.js";
 
 function toResult<T>(
   du: { success: true; data: T } | { success: false; error: ZodError }

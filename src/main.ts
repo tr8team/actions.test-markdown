@@ -1,20 +1,20 @@
-import os from "os";
-import { GithubActionLogger } from "./external/github-action-logger";
-import { ZodValidatorAdapter } from "./lib/adapters/zod-validator-adapter";
-import { GithubActionIO } from "./external/github-action-i-o";
-import { IoInputRetriever } from "./lib/adapters/io-input-retriever";
+import { GithubActionLogger } from "./external/github-action-logger.js";
+import { ZodValidatorAdapter } from "./lib/adapters/zod-validator-adapter.js";
+import { GithubActionIO } from "./external/github-action-i-o.js";
+import { IoInputRetriever } from "./lib/adapters/io-input-retriever.js";
 import { setFailed } from "@actions/core";
-import { historyEntry, history } from "./lib/input";
-import { SimpleRenderService } from "./lib/simple-render-service";
-import { SimpleTableGenerator } from "./lib/simple-table-generator";
-import { Kore } from "@kirinnee/core";
-import { Converter } from "./lib/interface/converter";
-import { App } from "./lib/main";
-import { stringToOption } from "./lib/util";
-import { CodeQualityReportConverter } from "./lib/converter/code-quality-report-converter";
-import { DocumentationConverter } from "./lib/converter/documentation-converter";
-import { TestResultConverter } from "./lib/converter/test-result-converter";
-import { TestCoverageConverter } from "./lib/converter/test-coverage-converter";
+import { history, historyEntry } from "./lib/input.js";
+import { SimpleRenderService } from "./lib/simple-render-service.js";
+import { SimpleTableGenerator } from "./lib/simple-table-generator.js";
+import pkgs from "@kirinnee/core";
+import { Converter } from "./lib/interface/converter.js";
+import { App } from "./lib/main.js";
+import { stringToOption } from "./lib/util.js";
+import { CodeQualityReportConverter } from "./lib/converter/code-quality-report-converter.js";
+import { DocumentationConverter } from "./lib/converter/documentation-converter.js";
+import { TestResultConverter } from "./lib/converter/test-result-converter.js";
+import { TestCoverageConverter } from "./lib/converter/test-coverage-converter.js";
+const { Kore } = pkgs;
 
 const core = new Kore();
 core.ExtendPrimitives();
@@ -34,16 +34,16 @@ const service = new SimpleRenderService(converters, tableGen);
 const app = new App(input, service, io);
 
 await app.run().match({
-  none: () => {
+  none: async () => {
     log.info("✅ Successfully extracted metadata");
   },
-  some: async (errs) => {
+  some: async (errs: Error[]) => {
     log.error("❌ Failed to extract metadata");
     for (const err of errs) {
       setFailed(err);
       const messages = await stringToOption(err?.stack).match({
         none: ["❌ No stacktrace found!"],
-        some: (stacktrace) => stacktrace.split(os.EOL),
+        some: (stacktrace: string) => stacktrace.split("\n"),
       });
       for (const m of messages) {
         log.error(m);

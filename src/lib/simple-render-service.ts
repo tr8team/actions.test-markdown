@@ -1,18 +1,18 @@
-import { ActionInput, DataElement } from "./input";
-import { Err, Ok, Res, Result } from "./core/result";
-import { RenderService } from "./interface/service";
-import { Converter } from "./interface/converter";
-import { TableGenerator } from "./interface/table-generator";
-import { Output } from "./output";
+import { ActionInput, DataElement } from "./input.js";
+import { Err, Ok, Res, Result } from "./core/result.js";
+import { RenderService } from "./interface/service.js";
+import { Converter } from "./interface/converter.js";
+import { TableGenerator } from "./interface/table-generator.js";
+import { Output } from "./output.js";
 
 class SimpleRenderService implements RenderService {
+  readonly #converters: Converter[];
+  readonly #table: TableGenerator;
+
   constructor(converters: Converter[], table: TableGenerator) {
     this.#converters = converters;
     this.#table = table;
   }
-
-  readonly #converters: Converter[];
-  readonly #table: TableGenerator;
 
   itemToHeader(item: DataElement): Result<string, Error> {
     return Res.async(async () => {
@@ -38,7 +38,10 @@ class SimpleRenderService implements RenderService {
 
     const table = this.#table.generateTable(input.history);
     return header.andThen((currentMarkdown) =>
-      table.map((historyMarkdown) => ({ currentMarkdown, historyMarkdown }))
+      table.map((historyMarkdown: string) => ({
+        currentMarkdown,
+        historyMarkdown,
+      }))
     );
   }
 }

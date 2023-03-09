@@ -1,5 +1,5 @@
-import { DataElement } from "../input";
-import { Option } from "../core/option";
+import { DataElement } from "../input.js";
+import { Option } from "../core/option.js";
 
 interface Converter {
   convertHeader(header: DataElement): Option<string>;

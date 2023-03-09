@@ -56,7 +56,9 @@ const testCoverageMetadata = base
         statement: number().min(-100).max(100),
         function: number().min(-100).max(100),
         branch: number().min(-100).max(100),
-      }).strict()
+      })
+        .strict()
+        .nullable()
     ),
     line: number().min(0).max(100),
     statement: number().min(0).max(100),

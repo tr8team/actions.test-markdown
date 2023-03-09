@@ -1,5 +1,5 @@
-import { Result } from "../core/result";
-import { History } from "../input";
+import { Result } from "../core/result.js";
+import { History } from "../input.js";
 
 interface TableGenerator {
   generateTable(input: History): Result<string, Error[]>;

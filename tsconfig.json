@@ -3,7 +3,8 @@
   "compilerOptions": {
     // compilation
     "outDir": "./lib/commonjs",
-    "rootDir": "./src"
+    "rootDir": "./src",
+    "noImplicitAny": false
   },
   "exclude": ["../node_modules", "tests", "config"]
 }

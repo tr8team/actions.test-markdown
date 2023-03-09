@@ -204,13 +204,13 @@ type ISome<T> = ["some", T];
 type INone = ["none", null];
 
 class KOption<T> implements Option<T> {
+  value: Promise<ISome<T> | INone>;
+
   constructor(
     value: Promise<ISome<T>> | Promise<INone> | Promise<ISome<T> | INone>
   ) {
     this.value = Promise.resolve(value);
   }
-
-  value: Promise<ISome<T> | INone>;
 
   async native(): Promise<T | null> {
     const [, v] = await this.value;

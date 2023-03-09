@@ -1,7 +1,7 @@
-import { Converter } from "../interface/converter";
-import { DataElement } from "../input";
-import { None, Option, Some } from "../core/option";
-import { emoji, resultToColor, resultToMarkdown } from "../util";
+import { DataElement } from "../input.js";
+import { None, Option, Some } from "../core/option.js";
+import { emoji, resultToColor, resultToMarkdown } from "../util.js";
+import { Converter } from "../interface/converter.js";
 
 class TestResultConverter implements Converter {
   convertHeader(header: DataElement): Option<string> {

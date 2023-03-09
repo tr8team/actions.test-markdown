@@ -1,7 +1,7 @@
-import { TableGenerator } from "./interface/table-generator";
-import { Err, Ok, Res, Result } from "./core/result";
-import { DataElement, History, HistoryEntry } from "./input";
-import { Converter } from "./interface/converter";
+import { DataElement, HistoryEntry, History } from "./input.js";
+import { Err, Ok, Res, Result } from "./core/result.js";
+import { Converter } from "./interface/converter.js";
+import { TableGenerator } from "./interface/table-generator.js";
 import { Core } from "@kirinnee/core";
 
 class SimpleTableGenerator implements TableGenerator {
