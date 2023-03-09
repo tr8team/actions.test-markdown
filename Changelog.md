@@ -1,3 +1,10 @@
+## [1.0.7](https://github.com/tr8team/actions.test-markdown/compare/v1.0.6...v1.0.7) (2023-03-09)
+
+
+### Bug Fixes
+
+* accept null for test detla ([3d92355](https://github.com/tr8team/actions.test-markdown/commit/3d92355a187f23f8813cd377d885b1384f46dad5))
+
 ## [1.0.6](https://github.com/tr8team/actions.test-markdown/compare/v1.0.5...v1.0.6) (2023-03-09)
 
 
