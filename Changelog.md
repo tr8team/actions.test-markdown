@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/tr8team/actions.test-markdown/compare/v1.0.4...v1.0.5) (2023-03-09)
+
+
+### Bug Fixes
+
+* populate with commit and action url ([fa353a9](https://github.com/tr8team/actions.test-markdown/commit/fa353a9de59785769f871de8498ec6b106834a7f))
+
 ## [1.0.4](https://github.com/tr8team/actions.test-markdown/compare/v1.0.3...v1.0.4) (2023-03-09)
 
 
