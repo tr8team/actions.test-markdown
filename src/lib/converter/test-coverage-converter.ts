@@ -42,7 +42,6 @@ class TestCoverageConverter implements Converter {
       return Some(`
 ${h}
 Report: [Coverage](${header.url})
-${coverage}
 ${delta}
 ${policy}
 `);
