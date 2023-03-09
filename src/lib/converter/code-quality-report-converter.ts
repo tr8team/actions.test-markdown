@@ -5,23 +5,21 @@ import { emoji, resultToColor, resultToMarkdown } from "../util";
 
 class CodeQualityReportConverter implements Converter {
   convertHeader(header: DataElement): Option<string> {
-    return this.convertTable(header).andThen((badge) => {
-      if (header.data.type === "code-quality") {
-        const f = emoji(header.data.result);
-        const h = `##### ${f}  ${header.name}\n`;
-        const result = `
+    if (header.data.type === "code-quality") {
+      const f = emoji(header.data.result);
+      const h = `## ${f}  ${header.name}\n`;
+      const result = `
         **Quality Rating**: ${header.data.qualityRating}\\
 `;
-        const policy = resultToMarkdown(header.data.resultDetails);
-        return Some(`
+      const policy = resultToMarkdown(header.data.resultDetails);
+      return Some(`
 ${h}
-Report: ${badge}
+Report: [Code Quality](${header.url})
 ${result}
 ${policy}
 `);
-      }
-      return None();
-    });
+    }
+    return None();
   }
 
   convertTable(table: DataElement): Option<string> {

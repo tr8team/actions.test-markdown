@@ -8,7 +8,7 @@ class DocumentationConverter implements Converter {
     return this.convertTable(header).andThen((badge) => {
       if (header.data.type === "documentation") {
         const f = emoji(header.data.result);
-        const h = `##### ${f}  ${header.name}\n`;
+        const h = `## ${f}  ${header.name}\n`;
         const policy = resultToMarkdown(header.data.resultDetails);
         return Some(`
 ${h}

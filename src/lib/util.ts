@@ -44,11 +44,11 @@ function emoji(a: PolicyResult) {
 function resultToColor(a: PolicyResult) {
   switch (a) {
     case "pass":
-      return "green";
+      return "brightgreen";
     case "fail":
       return "red";
     case "warn":
-      return "orange";
+      return "yellow";
     default:
       return "lightgrey";
   }
@@ -59,7 +59,7 @@ function resultToMarkdown(p: PolicyData): string {
   const fail = p.fail.map((x) => `* ${emoji("fail")} ${x}`);
   const warn = p.warn.map((x) => `* ${emoji("warn")} ${x}`);
   const pass = p.pass.map((x) => `* ${emoji("pass")} ${x}`);
-  return `**Policies:**\n${[...fail, ...warn, ...pass].join("\n")}`;
+  return `##### Policies\n${[...fail, ...warn, ...pass].join("\n")}`;
 }
 
 export {

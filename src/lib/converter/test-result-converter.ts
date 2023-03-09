@@ -5,28 +5,25 @@ import { emoji, resultToColor, resultToMarkdown } from "../util";
 
 class TestResultConverter implements Converter {
   convertHeader(header: DataElement): Option<string> {
-    return this.convertTable(header).andThen((badge) => {
-      if (header.data.type === "test-result") {
-        const f = emoji(header.data.result);
-        const h = `##### ${f}  ${header.name}\n`;
-        const result = `
-        **Results**: \\
-        | Tests | Amount |
-        | ---- | -------- |
-        | Pass | ${header.data.pass} |
-        | Fail | ${header.data.fail} |
-        | Skip | ${header.data.skip} |
+    if (header.data.type === "test-result") {
+      const f = emoji(header.data.result);
+      const h = `## ${f}  ${header.name}\n`;
+      const result = `
+| Tests | Amount |
+| ---- | -------- |
+| Pass | ${header.data.pass} |
+| Fail | ${header.data.fail} |
+| Skip | ${header.data.skip} |
 `;
-        const policy = resultToMarkdown(header.data.resultDetails);
-        return Some(`
- ${h}
- Report: ${badge}
- ${result}
-  ${policy}
+      const policy = resultToMarkdown(header.data.resultDetails);
+      return Some(`
+${h}
+Report: [Test Results](${header.url})
+${result}
+${policy}
 `);
-      }
-      return None();
-    });
+    }
+    return None();
   }
 
   convertTable(table: DataElement): Option<string> {

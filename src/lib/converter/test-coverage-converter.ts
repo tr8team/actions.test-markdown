@@ -5,12 +5,10 @@ import { emoji, resultToColor, resultToMarkdown } from "../util";
 
 class TestCoverageConverter implements Converter {
   convertHeader(header: DataElement): Option<string> {
-    return this.convertTable(header).andThen((badge) => {
-      if (header.data.type === "test-coverage") {
-        const f = emoji(header.data.result);
-        const h = `##### ${f}  ${header.name}\n`;
-        const coverage = `
-**Basic Coverage**: \\
+    if (header.data.type === "test-coverage") {
+      const f = emoji(header.data.result);
+      const h = `## ${f}  ${header.name}\n`;
+      const coverage = `
 | Type | Coverage |
 | ---- | -------- |
 | Line | ${header.data.line.toFixed(2)}% |
@@ -18,31 +16,38 @@ class TestCoverageConverter implements Converter {
 | Function | ${header.data.function.toFixed(2)}% |
 | Branch | ${header.data.branch.toFixed(2)}% |
 `;
-        const diff = header.data.delta;
-        const dEmoji = (d: number) => (d > 0 ? "⏫" : "⏬");
-        const delta =
-          diff == null
-            ? ""
-            : `**Change from base of PR**: \\
-| Type | Coverage |
-| ---- | -------- |
-| Line | ${diff.line.toFixed(2)}% ${dEmoji(diff.line)} |
-| Statement | ${diff.statement.toFixed(2)}% ${dEmoji(diff.statement)} |
-| Function | ${diff.function.toFixed(2)}% ${dEmoji(diff.function)} |
-| Branch | ${diff.branch.toFixed(2)}% ${dEmoji(diff.branch)} |
+      const diff = header.data.delta;
+      const dEmoji = (d: number) => (d > 0 ? "⏫" : "⏬");
+      const delta =
+        diff == null
+          ? coverage
+          : `
+| Type | Coverage | Delta |
+| ---- | -------- | ----- |
+| Line | ${header.data.line.toFixed(2)}% | ${diff.line.toFixed(2)}% ${dEmoji(
+              diff.line
+            )} |
+| Statement | ${header.data.statement.toFixed(2)}% | ${diff.statement.toFixed(
+              2
+            )}% ${dEmoji(diff.statement)} |
+| Function | ${header.data.function.toFixed(2)}% | ${diff.function.toFixed(
+              2
+            )}% ${dEmoji(diff.function)} |
+| Branch | ${header.data.branch.toFixed(2)}% | ${diff.branch.toFixed(
+              2
+            )}% ${dEmoji(diff.branch)} |
 `;
 
-        const policy = resultToMarkdown(header.data.resultDetails);
-        return Some(`
+      const policy = resultToMarkdown(header.data.resultDetails);
+      return Some(`
 ${h}
-Report: ${badge}
+Report: [Coverage](${header.url})
 ${coverage}
 ${delta}
 ${policy}
 `);
-      }
-      return None();
-    });
+    }
+    return None();
   }
 
   convertTable(table: DataElement): Option<string> {
