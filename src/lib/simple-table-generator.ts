@@ -47,8 +47,8 @@ class SimpleTableGenerator implements TableGenerator {
     });
     return Res.all(...rowResultRaw)
       .map((x) => [
-        `[${h.sha}](${h.url})`,
-        `[Github Action](${h.action})`,
+        `[${h.sha.Take(6)}](${h.url})`,
+        `[Action](${h.action})`,
         ...x,
       ])
       .map((x) => `|${x.join(" | ")} |`);
