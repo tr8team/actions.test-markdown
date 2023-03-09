@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/tr8team/actions.test-markdown/compare/v1.0.0...v1.0.1) (2023-03-09)
+
+
+### Bug Fixes
+
+* incorrect action ([37506fe](https://github.com/tr8team/actions.test-markdown/commit/37506fee7221ed544b8147d9e66fd2038df321e1))
+
 ## 1.0.0 (2023-03-09)
 
 
