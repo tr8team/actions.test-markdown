@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/tr8team/actions.test-markdown/compare/v1.0.2...v1.0.3) (2023-03-09)
+
+
+### Bug Fixes
+
+* markdown formatting ([5a79ffd](https://github.com/tr8team/actions.test-markdown/commit/5a79ffde79604b02ddc0bfa7725a72d5a35513f9))
+
 ## [1.0.2](https://github.com/tr8team/actions.test-markdown/compare/v1.0.1...v1.0.2) (2023-03-09)
 
 
