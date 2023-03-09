@@ -14,9 +14,9 @@ class CodeQualityReportConverter implements Converter {
 `;
         const policy = resultToMarkdown(header.data.resultDetails);
         return Some(`
- ${h}
- Report: ${badge}
- ${result}
+${h}
+Report: ${badge}
+${result}
 ${policy}
 `);
       }

@@ -10,13 +10,13 @@ class TestCoverageConverter implements Converter {
         const f = emoji(header.data.result);
         const h = `##### ${f}  ${header.name}\n`;
         const coverage = `
-        **Basic Coverage**: \\
-        | Type | Coverage |
-        | ---- | -------- |
-        | Line | ${header.data.line.toFixed(2)}% |
-        | Statement | ${header.data.statement.toFixed(2)}% |
-        | Function | ${header.data.function.toFixed(2)}% |
-        | Branch | ${header.data.branch.toFixed(2)}% |
+**Basic Coverage**: \\
+| Type | Coverage |
+| ---- | -------- |
+| Line | ${header.data.line.toFixed(2)}% |
+| Statement | ${header.data.statement.toFixed(2)}% |
+| Function | ${header.data.function.toFixed(2)}% |
+| Branch | ${header.data.branch.toFixed(2)}% |
 `;
         const diff = header.data.delta;
         const dEmoji = (d: number) => (d > 0 ? "⏫" : "⏬");
@@ -34,11 +34,11 @@ class TestCoverageConverter implements Converter {
 
         const policy = resultToMarkdown(header.data.resultDetails);
         return Some(`
- ${h}
- Report: ${badge}
- ${coverage}
- ${delta}
-  ${policy}
+${h}
+Report: ${badge}
+${coverage}
+${delta}
+${policy}
 `);
       }
       return None();

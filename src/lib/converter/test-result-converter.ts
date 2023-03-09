@@ -36,7 +36,7 @@ class TestResultConverter implements Converter {
       // ✔ HELLO | ✘ HELLO | ➟ HELLO
       return Some(
         `[![badge](https://img.shields.io/badge/test` +
-          `-%E2%9C%94%20${d.pass}%20%7C%20%E2%9C%98%20${d.fail}%20%7C%20%E2%9E%9F%${d.skip}` +
+          `-%E2%9C%94%20${d.pass}%20%7C%20%E2%9C%98%20${d.fail}%20%7C%20%E2%9E%9F%20${d.skip}` +
           `-${color})](${table.url})`
       );
     }
