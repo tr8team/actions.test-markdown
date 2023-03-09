@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/tr8team/actions.test-markdown/compare/v1.0.3...v1.0.4) (2023-03-09)
+
+
+### Bug Fixes
+
+* duplicate of coverage table ([6e63c3d](https://github.com/tr8team/actions.test-markdown/commit/6e63c3deecd04baec736bd7b360b9d5f72495459))
+
 ## [1.0.3](https://github.com/tr8team/actions.test-markdown/compare/v1.0.2...v1.0.3) (2023-03-09)
 
 
