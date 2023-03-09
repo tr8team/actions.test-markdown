@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/tr8team/actions.test-markdown/compare/v1.0.5...v1.0.6) (2023-03-09)
+
+
+### Bug Fixes
+
+* long SHA ([b6b1eb8](https://github.com/tr8team/actions.test-markdown/commit/b6b1eb82caca8d737381494d8747db520321f616))
+
 ## [1.0.5](https://github.com/tr8team/actions.test-markdown/compare/v1.0.4...v1.0.5) (2023-03-09)
 
 
