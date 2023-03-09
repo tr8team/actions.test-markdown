@@ -1,3 +1,10 @@
+## [1.0.8](https://github.com/tr8team/actions.test-markdown/compare/v1.0.7...v1.0.8) (2023-03-09)
+
+
+### Bug Fixes
+
+* back to using commonjs ([8bcf060](https://github.com/tr8team/actions.test-markdown/commit/8bcf060c1f58d80cde08035a7c51347598f947d9))
+
 ## [1.0.7](https://github.com/tr8team/actions.test-markdown/compare/v1.0.6...v1.0.7) (2023-03-09)
 
 
