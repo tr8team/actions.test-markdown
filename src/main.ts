@@ -1,20 +1,44 @@
-import { setFailed } from "@actions/core";
-import { wait } from "./lib/wait";
-import { GithubActionIO } from "./external/github-action-i-o";
+import os from "os";
 import { GithubActionLogger } from "./external/github-action-logger";
+import { ZodValidatorAdapter } from "./lib/adapters/zod-validator-adapter";
+import { GithubActionIO } from "./external/github-action-i-o";
+import { IoInputRetriever } from "./lib/adapters/io-input-retriever";
+import { setFailed } from "@actions/core";
+import { historyEntry, history } from "./lib/input";
+import { SimpleRenderService } from "./lib/simple-render-service";
+import { SimpleTableGenerator } from "./lib/simple-table-generator";
+import { Kore } from "@kirinnee/core";
+import { Converter } from "./lib/interface/converter";
+import { App } from "./lib/main";
+import { stringToOption } from "./lib/util";
 
-const io = new GithubActionIO();
+const core = new Kore();
+core.ExtendPrimitives();
 const log = new GithubActionLogger();
-try {
-  const ms: string = io.get("milliseconds");
-  log.debug(`Waiting ${ms} milliseconds ...`); // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
+const historyValidator = new ZodValidatorAdapter(history);
+const historyEntryValidator = new ZodValidatorAdapter(historyEntry);
+const io = new GithubActionIO();
+const input = new IoInputRetriever(io, historyEntryValidator, historyValidator);
+const converters: Converter[] = [];
+const tableGen = new SimpleTableGenerator(converters, core);
+const service = new SimpleRenderService(converters, tableGen);
+const app = new App(input, service, io);
 
-  log.debug(new Date().toTimeString());
-  await wait(parseInt(ms, 10));
-  log.debug(new Date().toTimeString());
-
-  log.debug(`Done!`);
-  io.set("time: ", new Date().toTimeString());
-} catch (error) {
-  if (error instanceof Error) setFailed(error.message);
-}
+await app.run().match({
+  none: () => {
+    log.info("✅ Successfully extracted metadata");
+  },
+  some: async (errs) => {
+    log.error("❌ Failed to extract metadata");
+    for (const err of errs) {
+      setFailed(err);
+      const messages = await stringToOption(err?.stack).match({
+        none: ["❌ No stacktrace found!"],
+        some: (stacktrace) => stacktrace.split(os.EOL),
+      });
+      for (const m of messages) {
+        log.error(m);
+      }
+    }
+  },
+});

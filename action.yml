@@ -2,10 +2,17 @@ name: "Your name here"
 description: "Provide a description here"
 author: "Your name or organization here"
 inputs:
-  milliseconds: # change this
+  current:
     required: true
-    description: "input description here"
-    default: "default value if applicable"
+    description: "current commit's validated data"
+  history:
+    required: true
+    description: "historical (PR)'s commit's validated data"
+outputs:
+  currentMarkdown:
+    description: renders markdown for current
+  historyMarkdown:
+    description: renders markdown for history
 runs:
   using: "node16"
   main: "dist/index.js"
