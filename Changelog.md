@@ -1,3 +1,11 @@
+## 1.0.0 (2023-03-09)
+
+
+### Features
+
+* initial framework ([821f006](https://github.com/tr8team/actions.test-markdown/commit/821f006d72b3d656eef51dfa203d9decfa54a030))
+* initial working prototype ([1daca44](https://github.com/tr8team/actions.test-markdown/commit/1daca44c60b77ecfc3fb5ac95a049574f8b85ed5))
+
 ## [1.3.0](https://github.com/tr8team/typescript-github-action-template/compare/v1.2.1...v1.3.0) (2023-03-04)
 
 
