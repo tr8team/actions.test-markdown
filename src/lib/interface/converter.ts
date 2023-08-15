@@ -5,6 +5,8 @@ interface Converter {
   convertHeader(header: DataElement): Option<string>;
 
   convertTable(table: DataElement): Option<string>;
+
+  convertBadge(badge: DataElement): Option<string>;
 }
 
 export type { Converter };

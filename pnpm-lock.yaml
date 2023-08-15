@@ -19,6 +19,8 @@ specifiers:
   chai-as-promised: ^7.1.1
   eslint: ^8.35.0
   eslint-plugin-github: ^4.6.1
+  inversify: ^6.0.1
+  inversify-binding-decorators: ^4.0.0
   prettier: 2.8.4
   ts-mockito: ^2.6.1
   ts-node: ^10.9.1
@@ -32,6 +34,8 @@ dependencies:
   "@kirinnee/core": 0.7.8
   "@octokit/core": 4.2.0
   "@octokit/rest": 19.0.7
+  inversify: 6.0.1
+  inversify-binding-decorators: 4.0.0
   zod: 3.21.0
 
 devDependencies:
@@ -2975,6 +2979,20 @@ packages:
       has: 1.0.3
       side-channel: 1.0.4
     dev: true
+
+  /inversify-binding-decorators/4.0.0:
+    resolution:
+      {
+        integrity: sha512-r8au/oH3vS7ttHj0RivAznwElySeRohLfg8lvOSzbrX6abf/8ik8ptk49XbzdShgrnalvl7CM6MjcskfM7MMqQ==,
+      }
+    dev: false
+
+  /inversify/6.0.1:
+    resolution:
+      {
+        integrity: sha512-B3ex30927698TJENHR++8FfEaJGqoWOgI6ZY5Ht/nLUsFCwHn6akbwtnUAPCgUepAnTpe2qHxhDNjoKLyz6rgQ==,
+      }
+    dev: false
 
   /is-arguments/1.1.1:
     resolution:

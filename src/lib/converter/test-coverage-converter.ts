@@ -66,6 +66,24 @@ ${policy}
     }
     return None();
   }
+
+  convertBadge(badge: DataElement): Option<string> {
+    if (badge.data.type === "test-coverage") {
+      const color = resultToColor(badge.data.result);
+      const d = badge.data;
+      // ☲ 100% | ∬ 90.2% | 🜉 25.5%
+      return Some(
+        `[![badge](https://img.shields.io/badge/${badge.name}` +
+          `-%E2%98%B2%20${d.statement.toFixed(
+            1
+          )}%25%20%7C%20%E2%88%AC%20${d.function.toFixed(
+            1
+          )}%25%20%7C%20%F0%9F%9C%89%20${d.branch.toFixed(1)}%25` +
+          `-${color})](${badge.url})`
+      );
+    }
+    return None();
+  }
 }
 
 export { TestCoverageConverter };

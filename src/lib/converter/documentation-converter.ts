@@ -26,6 +26,15 @@ ${policy}
     }
     return None();
   }
+
+  convertBadge(badge: DataElement): Option<string> {
+    if (badge.data.type === "documentation") {
+      return Some(
+        `[![badge](https://img.shields.io/badge/${badge.name})](${badge.url})`
+      );
+    }
+    return None();
+  }
 }
 
 export { DocumentationConverter };

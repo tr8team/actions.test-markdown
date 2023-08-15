@@ -39,6 +39,20 @@ ${policy}
     }
     return None();
   }
+
+  convertBadge(table: DataElement): Option<string> {
+    if (table.data.type === "test-result") {
+      const color = resultToColor(table.data.result);
+      const d = table.data;
+      // ✔ HELLO | ✘ HELLO | ➟ HELLO
+      return Some(
+        `[![badge](https://img.shields.io/badge/${table.name}` +
+          `-%E2%9C%94%20${d.pass}%20%7C%20%E2%9C%98%20${d.fail}%20%7C%20%E2%9E%9F%20${d.skip}` +
+          `-${color})](${table.url})`
+      );
+    }
+    return None();
+  }
 }
 
 export { TestResultConverter };

@@ -34,6 +34,19 @@ ${policy}
     }
     return None();
   }
+
+  convertBadge(badge: DataElement): Option<string> {
+    if (badge.data.type === "code-quality") {
+      const color = resultToColor(badge.data.result);
+      const d = badge.data;
+      return Some(
+        `[![badge](https://img.shields.io/badge/${badge.name}` +
+          `-${d.qualityRating}` +
+          `-${color})](${badge.url})`
+      );
+    }
+    return None();
+  }
 }
 
 export { CodeQualityReportConverter };
