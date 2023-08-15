@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/tr8team/actions.test-markdown/compare/v1.1.0...v1.1.1) (2023-08-15)
+
+
+### Bug Fixes
+
+* missing set output ([d35fafb](https://github.com/tr8team/actions.test-markdown/commit/d35fafbfc797cd18a6fdf0717c166478537916cf))
+
 ## [1.1.0](https://github.com/tr8team/actions.test-markdown/compare/v1.0.8...v1.1.0) (2023-08-15)
 
 
