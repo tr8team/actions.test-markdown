@@ -1,3 +1,15 @@
+## [1.1.0](https://github.com/tr8team/actions.test-markdown/compare/v1.0.8...v1.1.0) (2023-08-15)
+
+
+### Bug Fixes
+
+* CI ([2141295](https://github.com/tr8team/actions.test-markdown/commit/2141295fa7347b9e63a0674dfbd7d4dd08858aa2))
+
+
+### Features
+
+* add badge rendering ([da3ea53](https://github.com/tr8team/actions.test-markdown/commit/da3ea532e137e58924587e69b23b98d60875951a))
+
 ## [1.0.8](https://github.com/tr8team/actions.test-markdown/compare/v1.0.7...v1.0.8) (2023-03-09)
 
 
