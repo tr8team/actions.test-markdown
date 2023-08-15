@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/tr8team/actions.test-markdown/compare/v1.1.1...v1.1.2) (2023-08-15)
+
+
+### Bug Fixes
+
+* url encoding of badges ([f694861](https://github.com/tr8team/actions.test-markdown/commit/f694861b19afde201a7df7e31d2d42bf329beac8))
+
 ## [1.1.1](https://github.com/tr8team/actions.test-markdown/compare/v1.1.0...v1.1.1) (2023-08-15)
 
 
