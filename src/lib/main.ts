@@ -23,6 +23,7 @@ export class App {
       .run((o) => {
         this.#io.set("currentMarkdown", o.currentMarkdown);
         this.#io.set("historyMarkdown", o.historyMarkdown);
+        this.#io.set("badges", o.badges);
       })
       .err();
   }
