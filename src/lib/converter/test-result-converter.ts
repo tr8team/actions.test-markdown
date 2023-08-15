@@ -34,7 +34,7 @@ ${policy}
       return Some(
         `[![badge](https://img.shields.io/badge/test` +
           `-%E2%9C%94%20${d.pass}%20%7C%20%E2%9C%98%20${d.fail}%20%7C%20%E2%9E%9F%20${d.skip}` +
-          `-${color})](${table.url})`
+          `-${color})](${table.url})`,
       );
     }
     return None();
@@ -44,11 +44,12 @@ ${policy}
     if (table.data.type === "test-result") {
       const color = resultToColor(table.data.result);
       const d = table.data;
+      const n = encodeURIComponent(table.name);
       // ✔ HELLO | ✘ HELLO | ➟ HELLO
       return Some(
-        `[![badge](https://img.shields.io/badge/${table.name}` +
+        `[![badge](https://img.shields.io/badge/${n}` +
           `-%E2%9C%94%20${d.pass}%20%7C%20%E2%9C%98%20${d.fail}%20%7C%20%E2%9E%9F%20${d.skip}` +
-          `-${color})](${table.url})`
+          `-${color})](${table.url})`,
       );
     }
     return None();

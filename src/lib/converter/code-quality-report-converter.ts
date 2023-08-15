@@ -29,7 +29,7 @@ ${policy}
       return Some(
         `[![badge](https://img.shields.io/badge/quality` +
           `-${d.qualityRating}` +
-          `-${color})](${table.url})`
+          `-${color})](${table.url})`,
       );
     }
     return None();
@@ -39,10 +39,11 @@ ${policy}
     if (badge.data.type === "code-quality") {
       const color = resultToColor(badge.data.result);
       const d = badge.data;
+      const n = encodeURIComponent(badge.name);
       return Some(
-        `[![badge](https://img.shields.io/badge/${badge.name}` +
+        `[![badge](https://img.shields.io/badge/${n}` +
           `-${d.qualityRating}` +
-          `-${color})](${badge.url})`
+          `-${color})](${badge.url})`,
       );
     }
     return None();

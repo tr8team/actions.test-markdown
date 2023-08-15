@@ -29,8 +29,9 @@ ${policy}
 
   convertBadge(badge: DataElement): Option<string> {
     if (badge.data.type === "documentation") {
+      const n = encodeURIComponent(badge.name);
       return Some(
-        `[![badge](https://img.shields.io/badge/${badge.name})](${badge.url})`
+        `[![badge](https://img.shields.io/badge/${n}-blue?style=for-the-badge)](${badge.url})`,
       );
     }
     return None();
